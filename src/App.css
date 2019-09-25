@@ -1,3 +1,7 @@
+body {
+  background-image: url("./components/raychan-jrNY1BZhnJg-unsplash.jpg");
+  color: white;
+}
 .App {
   text-align: center;
 }
@@ -30,4 +34,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.npod {
+  font-size: 3rem;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  padding: 0 15%;
+  border-bottom: 1px solid white;
+  margin-bottom: 3%;
+}
+
+.nav-bar li {
+  list-style: none;
+  cursor: pointer;
+}
+
+.date {
+  font-size: 3rem;
+}
+
+.explanation {
+  padding: 0 15%;
+  border-bottom: 1px solid white;
+  padding-bottom: 2%;
 }
