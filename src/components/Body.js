@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./Header";
-import Datepick from "./Datepicker";
 import moment from "moment";
+import InfoToggle from "./InfoToggle";
+import ArchiveModal from "./ArchiveModal";
 
 function Body() {
   const [info, setInfo] = useState([]);
@@ -45,9 +46,9 @@ function Body() {
       <div className="title">
         <h2>{info.title}</h2>
       </div>
+      <ArchiveModal />
       <div className="date-comp">
         <span className="date-picker">
-          <p>Select from Archives</p>
           <button
             onClick={() => {
               handleDateSubtract();
@@ -67,8 +68,8 @@ function Body() {
       </div>
 
       <img src={info.url} className="image" alt={info.title} />
-
-      <p className="explanation">{info.explanation}</p>
+      <InfoToggle explanation={info.explanation} />
+      {/* <p className="explanation">{info.explanation}</p> */}
     </div>
   );
 }

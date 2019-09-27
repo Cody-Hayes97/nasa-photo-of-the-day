@@ -1,26 +1,62 @@
 import React from "react";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 
-function Header(props) {
-  return (
-    <div>
-      <h1 className="npod">NASA Photo of the Day</h1>
-      <nav className="nav-bar">
-        <ul>
-          <li>Home</li>
-        </ul>
-        <ul>
-          <li>Image</li>
-        </ul>
-        <ul>
-          <li>About</li>
-        </ul>
-        <ul>
-          <li>Contact</li>
-        </ul>
-      </nav>
-      <span className="date">{props.date}</span>
-    </div>
-  );
+export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+  render() {
+    return (
+      <div>
+        <Navbar color="dark" light expand="md">
+          <NavbarBrand href="/">NASA Photo of the Day</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="navigation" navbar>
+              <NavItem>
+                <NavLink href="/components/">Photos</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="https://github.com/reactstrap/reactstrap">
+                  About
+                </NavLink>
+              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Info
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>Get API</DropdownItem>
+                  <DropdownItem>Contact</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          </Collapse>
+        </Navbar>
+        <h2>{this.props.date}</h2>
+      </div>
+    );
+  }
 }
-
-export default Header;
